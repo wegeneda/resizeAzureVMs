@@ -46,7 +46,7 @@ if ($CSV) {
         if ($acnw) {
             Write-Host "$VMname has accelerated networking enabled!" -ForegroundColor Black -BackgroundColor Yellow
             #check if accelerated networking is supported on new SKU // turn off accelerated networking if necessary
-            if ($sku -le 4) {
+            if ($sku -lt 4) {
                 Write-Host "New SKU does not support accelerated networking. Disabling..." -ForegroundColor Black -BackgroundColor Yellow
                 $nic.EnableAcceleratedNetworking = $false
                 $nic | Set-AzNetworkInterface > $null
